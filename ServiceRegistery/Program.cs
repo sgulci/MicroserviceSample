@@ -6,7 +6,7 @@ namespace ServiceRegistery
 {
     class Program
     {
-        private const string BaseAddress = "http://*:5000";
+        private const string BaseAddress = "http://localhost:5000";
 
         static void Main(string[] args)
         {
