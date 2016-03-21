@@ -1,7 +1,9 @@
 ﻿
+using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-
+using System.Web.Http.Results;
 
 namespace ApiGateway.Api
 {
@@ -11,22 +13,40 @@ namespace ApiGateway.Api
 
         [Route("getordersbycustomer/{customerid}")]
         [HttpGet]
-        public string GetOrdersByCustomer(string customerid)
+        public JsonResult<string> GetOrdersByCustomer(string customerid)
         {
             //Todo : önce service registery'den adresleri alacak sonra servisleri call edecek
-            return customerid;
+            Console.WriteLine("GetOrdersByCustomer customerid :" + customerid);
+            return Json(customerid);
         }
 
 
 
         [Route("getproductsinorder/{customerid}")]
         [HttpGet]
-        public string GetProductsInOrder(string orderid)
+        public JsonResult<string>  GetProductsInOrder(string orderid)
         {
-            //Todo : Gelen servis adına göre uygun servis adreslerinden birini dönecek
-            return orderid;
+            //Todo :  önce service registery'den adresleri alacak sonra servisleri call edecek
+
+            Console.WriteLine("GetProductsInOrder orderid :" + orderid);
+
+           
+
+            return Json( orderid);
         }
 
-        
+        private string CallRestService(string url)
+        {
+
+            //var url = "http://api.openweathermap.org/data/2.1/find/city?lat=51.50853&lon=-0.12574&cnt=10";
+
+            Console.WriteLine("CallRestService url :" + url);
+
+            var syncClient = new WebClient();
+            var content = syncClient.DownloadString(url);
+
+
+            return content;
+        }
     }
 }

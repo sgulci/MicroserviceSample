@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace ServiceRegistery.Api
 {
@@ -18,20 +19,20 @@ namespace ServiceRegistery.Api
         
         [Route("save/{info}")]
         [HttpGet]
-        public string Save(string info)
+        public JsonResult<string> Save(string info)
         {
             //Todo: gelen verileri dictionarye at
             Console.WriteLine("Save :" + info);
-            return info;
+            return Json(info);
         }
 
         [Route("getserviceinfo/{servicekey}")]
         [HttpGet]
-        public string GetServiceInfo(string serviceKey)
+        public JsonResult<string> GetServiceInfo(string serviceKey)
         {
             //Todo : Gelen servis adına göre uygun servis adreslerinden birini dönecek
             Console.WriteLine("GetServiceInfo :" + serviceKey);
-            return serviceKey;
+            return Json(serviceKey);
         }
     }
 }
