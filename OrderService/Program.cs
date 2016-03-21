@@ -12,7 +12,7 @@ namespace OrderService
         {
             using (WebApp.Start<Startup>(url: BaseAddress))
             {
-                Console.WriteLine("Application started...");
+                Console.WriteLine("Order started...");
                 string readVal = Console.ReadLine();
                 while (string.IsNullOrEmpty(readVal))
                 {

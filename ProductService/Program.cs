@@ -12,7 +12,7 @@ namespace ProductService
         {
             using (WebApp.Start<Startup>(url: BaseAddress))
             {
-                Console.WriteLine("Customer Service started...");
+                Console.WriteLine("Product Service started...");
                 string readVal = Console.ReadLine();
                 while (string.IsNullOrEmpty(readVal))
                 {

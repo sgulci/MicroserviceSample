@@ -1,34 +1,37 @@
 ﻿using ServiceRegistery.Model;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace ServiceRegistery.Api
 {
-    [RoutePrefix("api/reg")]
+    [RoutePrefix("api/register")]
     public class RegisterController : ApiController 
     {
-        private Dictionary<List<Registery>, string> _repo;
+        private Dictionary<List<string>, string> _repo;
 
         public RegisterController()
         {
-            _repo = new Dictionary<List<Registery>, string>();
+            _repo = new Dictionary<List<string>, string>();
+        }
+        
+        [Route("save/{info}")]
+        [HttpGet]
+        public string Save(string info)
+        {
+            //Todo: gelen verileri dictionarye at
+            Console.WriteLine("Save :" + info);
+            return info;
         }
 
-        //public  string Get(string id)
-        //{
-        //    return  "ok";
-        //}
-
-        //public  string Post(string node)
-        //{
-        //    return "ok";
-        //}
-
-        [Route("getmemo/{tt}")]
-        public string GetMemo(string tt)
+        [Route("getserviceinfo/{servicekey}")]
+        [HttpGet]
+        public string GetServiceInfo(string serviceKey)
         {
-            return "tus";
+            //Todo : Gelen servis adına göre uygun servis adreslerinden birini dönecek
+            Console.WriteLine("GetServiceInfo :" + serviceKey);
+            return serviceKey;
         }
     }
 }
