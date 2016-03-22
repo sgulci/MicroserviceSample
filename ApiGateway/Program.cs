@@ -7,10 +7,11 @@ namespace ApiGateway
     class Program
     {
         private const string BaseAddress = "http://*:5001";
+        private const string BaseAddress_Test = "http://localhost:5001";
 
         static void Main(string[] args)
         {
-            using (WebApp.Start<Startup>(url: BaseAddress))
+            using (WebApp.Start<Startup>(url: BaseAddress_Test))
             {
                 Console.WriteLine("ApiGateway Service started...");
                 string readVal = Console.ReadLine();

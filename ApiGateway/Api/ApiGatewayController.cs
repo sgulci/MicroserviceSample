@@ -10,6 +10,8 @@ namespace ApiGateway.Api
     [RoutePrefix("api/gateway")]
     public class ApiGatewayController : ApiController
     {
+        string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/getserviceinfo/";
+        string Service_Registery_Url_Test = "http://localhost:5000/api/registery/getserviceinfo/";
 
         [Route("getordersbycustomer/{customerid}")]
         [HttpGet]
@@ -17,12 +19,31 @@ namespace ApiGateway.Api
         {
             //Todo : önce service registery'den adresleri alacak sonra servisleri call edecek
             Console.WriteLine("GetOrdersByCustomer customerid :" + customerid);
+
+            Console.WriteLine("Calling registery service for customer ");
+
+            string customerUrl = ServiceCall.RestService(Service_Registery_Url_Test + "customer");
+
+            Console.WriteLine("Calling customer service " );
+
+            string customers = ServiceCall.RestService("http://"+ customerUrl.Replace("\"","") + "/api/customer");
+
+            Console.WriteLine("Calling registery service for order ");
+
+            string orderUrl = ServiceCall.RestService(Service_Registery_Url_Test + "order");
+
+            Console.WriteLine("Calling order service ");
+
+            string orders = ServiceCall.RestService("http://" + orderUrl.Replace("\"", "") + "/api/order");
+
+            Console.WriteLine(" order service result " + orders);
+
             return Json(customerid);
         }
 
 
 
-        [Route("getproductsinorder/{customerid}")]
+        [Route("getproductsinorder/{orderid}")]
         [HttpGet]
         public JsonResult<string>  GetProductsInOrder(string orderid)
         {
@@ -30,23 +51,28 @@ namespace ApiGateway.Api
 
             Console.WriteLine("GetProductsInOrder orderid :" + orderid);
 
-           
+            Console.WriteLine("Calling registery service for product ");
+
+            string productUrl = ServiceCall.RestService(Service_Registery_Url_Test + "product");
+
+            Console.WriteLine("Calling product service ");
+
+            string products = ServiceCall.RestService("http://" + productUrl.Replace("\"", "") + "/api/product");
+
+            Console.WriteLine("product service result " + products);
+
+            Console.WriteLine("Calling registery service for order ");
+
+            string orderUrl = ServiceCall.RestService(Service_Registery_Url_Test.Replace("\"", "") + "order");
+
+            Console.WriteLine("Calling order service ");
+
+            string orders = ServiceCall.RestService("http://" + orderUrl.Replace("\"", "") + "/api/order");
+
+            Console.WriteLine(" order service result " + orders);
 
             return Json( orderid);
         }
-
-        private string CallRestService(string url)
-        {
-
-            //var url = "http://api.openweathermap.org/data/2.1/find/city?lat=51.50853&lon=-0.12574&cnt=10";
-
-            Console.WriteLine("CallRestService url :" + url);
-
-            var syncClient = new WebClient();
-            var content = syncClient.DownloadString(url);
-
-
-            return content;
-        }
+        
     }
 }

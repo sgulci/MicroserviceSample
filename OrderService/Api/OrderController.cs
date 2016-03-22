@@ -2,7 +2,7 @@
 using OrderService.Model;
 using System.Threading.Tasks;
 using System.Web.Http;
-
+using System.Web.Http.Results;
 
 namespace OrderService.Api
 {
@@ -14,6 +14,12 @@ namespace OrderService.Api
         {
             _repo = new MongoOrderDb();
         }
+
+        public JsonResult<string> Get()
+        {
+            return Json("order");
+        }
+
         public async Task<Order> Get(string id)
         {
             return await _repo.GetOrder(id);

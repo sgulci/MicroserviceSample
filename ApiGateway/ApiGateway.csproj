@@ -83,6 +83,7 @@
     <Compile Include="Filter\ErrorHandlingFilter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceCall.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

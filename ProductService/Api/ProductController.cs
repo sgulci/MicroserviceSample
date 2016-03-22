@@ -2,6 +2,7 @@
 using ProductService.Model;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace ProductService.Api
 {
@@ -13,6 +14,12 @@ namespace ProductService.Api
         {
             _repo = new MongoProductDb();
         }
+
+        public JsonResult<string> Get()
+        {
+            return Json("product");
+        }
+
         public async Task<Product> Get(string id)
         {
             return await _repo.GetOrder(id);
