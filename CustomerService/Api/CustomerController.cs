@@ -1,5 +1,6 @@
 ﻿using CustomerService.Data;
 using CustomerService.Model;
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -17,6 +18,8 @@ namespace CustomerService.Api
 
         public JsonResult<string> Get()
         {
+            Console.WriteLine("Called Customer service for Get");
+
             return  Json("customer");
         }
 

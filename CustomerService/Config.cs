@@ -19,7 +19,7 @@ namespace CustomerService
 
             httpConfiguration.Filters.Add(new ErrorHandlingFilter());
 
-            ServiceCall.RestService(Service_Registery_Url_Test + Service_Url_Test  + ",customer");
+            ServiceCall.RestService(Service_Registery_Url + Service_Url  + ",customer");
         }
     }
 }

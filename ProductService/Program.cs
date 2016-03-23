@@ -11,7 +11,7 @@ namespace ProductService
 
         static void Main(string[] args)
         {
-            using (WebApp.Start<Startup>(url: BaseAddress_Test))
+            using (WebApp.Start<Startup>(url: BaseAddress))
             {
                 Console.WriteLine("Product Service started...");
                 string readVal = Console.ReadLine();

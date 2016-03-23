@@ -11,7 +11,7 @@ namespace CustomerService
 
         static void Main(string[] args)
         {
-            using (WebApp.Start<Startup>(url: BaseAddress_Test))
+            using (WebApp.Start<Startup>(url: BaseAddress))
             {
                 Console.WriteLine("Customer Service started...");
                 string readVal = Console.ReadLine();

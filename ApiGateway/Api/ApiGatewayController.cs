@@ -22,7 +22,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for customer ");
 
-            string customerUrl = ServiceCall.RestService(Service_Registery_Url_Test + "customer");
+            string customerUrl = ServiceCall.RestService(Service_Registery_Url + "customer");
 
             Console.WriteLine("Calling customer service " );
 
@@ -30,7 +30,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for order ");
 
-            string orderUrl = ServiceCall.RestService(Service_Registery_Url_Test + "order");
+            string orderUrl = ServiceCall.RestService(Service_Registery_Url + "order");
 
             Console.WriteLine("Calling order service ");
 
@@ -38,7 +38,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine(" order service result " + orders);
 
-            return Json(customerid);
+            return Json(customerid +" : " + customers + orders );
         }
 
 
@@ -53,7 +53,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for product ");
 
-            string productUrl = ServiceCall.RestService(Service_Registery_Url_Test + "product");
+            string productUrl = ServiceCall.RestService(Service_Registery_Url + "product");
 
             Console.WriteLine("Calling product service ");
 
@@ -63,7 +63,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for order ");
 
-            string orderUrl = ServiceCall.RestService(Service_Registery_Url_Test.Replace("\"", "") + "order");
+            string orderUrl = ServiceCall.RestService(Service_Registery_Url + "order");
 
             Console.WriteLine("Calling order service ");
 
@@ -71,7 +71,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine(" order service result " + orders);
 
-            return Json( orderid);
+            return Json(orderid +" : "+ products + orders);
         }
         
     }

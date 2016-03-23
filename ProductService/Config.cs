@@ -20,7 +20,7 @@ namespace ProductService
             httpConfiguration.Filters.Add(new ErrorHandlingFilter());
 
             //register this service
-            ServiceCall.RestService(Service_Registery_Url_Test + Service_Url_Test+ ",product");
+            ServiceCall.RestService(Service_Registery_Url + Service_Url+ ",product");
 
         }
     }

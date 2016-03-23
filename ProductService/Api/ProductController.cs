@@ -1,5 +1,6 @@
 ﻿using ProductService.Data;
 using ProductService.Model;
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -17,6 +18,8 @@ namespace ProductService.Api
 
         public JsonResult<string> Get()
         {
+            Console.WriteLine("Called Product service for Get");
+
             return Json("product");
         }
 

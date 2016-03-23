@@ -1,5 +1,6 @@
 ﻿using OrderService.Data;
 using OrderService.Model;
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -17,6 +18,8 @@ namespace OrderService.Api
 
         public JsonResult<string> Get()
         {
+            Console.WriteLine("Called Order service for Get");
+
             return Json("order");
         }
 
