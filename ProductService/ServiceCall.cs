@@ -14,9 +14,18 @@ namespace ProductService
             
             Console.WriteLine("CallRestService url :" + url);
 
-            var syncClient = new WebClient();
-            var content = syncClient.DownloadString(url);
+            string content = "";
 
+            try
+            {
+                var syncClient = new WebClient();
+                content = syncClient.DownloadString(url);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("rest call url :" + url + " exception ex :" + ex.Message);
+
+            }
 
             return content;
         }

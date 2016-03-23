@@ -42,9 +42,9 @@ namespace ServiceRegistery.Api
                 }
                 
             }
-            catch (Exception)
+            catch (Exception ex )
             {
-                throw;
+                info = " Registery service exception :" + ex.Message;
             }
 
             return Json(info);
@@ -67,9 +67,13 @@ namespace ServiceRegistery.Api
                 int urlIndex = rnd.Next(0, count-1); 
                 result = values[urlIndex];
             }
-            else
+            else if(count == 1)
             {
                 result = values[0];
+            }
+            else
+            {
+                result = "Cannot find microservice in that role :" + serviceRole;
             }
 
             Console.WriteLine("GetServiceInfo result :" + result);
