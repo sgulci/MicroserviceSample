@@ -1,5 +1,5 @@
-FROM mono:onbuild
+FROM mono:latest
 
 EXPOSE 5000
 
-CMD ["mono", "./ServiceRegistery.exe"]
+CMD ["mono", "ServiceRegistery.exe"]
