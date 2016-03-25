@@ -10,8 +10,13 @@ namespace ApiGateway.Api
     [RoutePrefix("api/gateway")]
     public class ApiGatewayController : ApiController
     {
-        string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/getserviceinfo/";
-        string Service_Registery_Url_Test = "http://localhost:5000/api/registery/getserviceinfo/";
+#if !DEBUG
+        string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/getserviceinfo/";       
+
+#else
+        string Service_Registery_Url = "http://localhost:5000/api/registery/getserviceinfo/";
+#endif
+
 
         [Route("getordersbycustomer/{customerid}")]
         [HttpGet]
@@ -24,9 +29,9 @@ namespace ApiGateway.Api
 
             string customerUrl = ServiceCall.RestService(Service_Registery_Url + "customer");
 
-            Console.WriteLine("Calling customer service " );
+            Console.WriteLine("Calling customer service ");
 
-            string customers = ServiceCall.RestService("http://"+ customerUrl.Replace("\"","") + "/api/customer");
+            string customers = ServiceCall.RestService("http://" + customerUrl.Replace("\"", "") + "/api/customer");
 
             Console.WriteLine("Calling registery service for order ");
 
@@ -38,14 +43,14 @@ namespace ApiGateway.Api
 
             Console.WriteLine(" order service result " + orders);
 
-            return Json(customerid +" : " + customers + orders );
+            return Json(customerid + " : " + customers + orders);
         }
 
 
 
         [Route("getproductsinorder/{orderid}")]
         [HttpGet]
-        public JsonResult<string>  GetProductsInOrder(string orderid)
+        public JsonResult<string> GetProductsInOrder(string orderid)
         {
             //Todo :  önce service registery'den adresleri alacak sonra servisleri call edecek
 
@@ -71,8 +76,8 @@ namespace ApiGateway.Api
 
             Console.WriteLine(" order service result " + orders);
 
-            return Json(orderid +" : "+ products + orders);
+            return Json(orderid + " : " + products + orders);
         }
-        
+
     }
 }

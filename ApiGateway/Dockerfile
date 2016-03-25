@@ -1,5 +1,7 @@
-FROM mono:onbuild
+FROM mono:latest
+
+ADD . /app/
 
 EXPOSE 5001
 
-CMD ["mono", "./ApiGateway.exe"]
+CMD ["mono", "/app/ApiGateway.exe"]

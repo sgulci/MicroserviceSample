@@ -1,5 +1,7 @@
-FROM mono:onbuild
+FROM mono:latest
+
+ADD . /app/
 
 EXPOSE 5003
 
-CMD ["mono", "./OrderService.exe"]
+CMD ["mono", "/app/OrderService.exe"]

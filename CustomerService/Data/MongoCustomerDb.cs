@@ -13,7 +13,7 @@ namespace CustomerService.Data
         protected static IMongoClient _client;
         protected static IMongoDatabase _database;
         private IMongoCollection<Customer> _collection;
-        private const string ConnectionString = "mongodb://192.168.99.100:27017";
+        private const string ConnectionString = "mongodb://127.0.0.1:27017";
 
         static MongoCustomerDb()
         {

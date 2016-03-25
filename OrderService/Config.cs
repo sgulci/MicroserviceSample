@@ -5,11 +5,14 @@ namespace OrderService
 {
     public class Config
     {
-        static string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/save/";
-        static string Service_Registery_Url_Test = "http://localhost:5000/api/registery/save/";
 
+#if !DEBUG
+        static string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/save/";
         static string Service_Url = "192.168.99.100:5003";
-        static string Service_Url_Test = "localhost:5003";
+#else
+        static string Service_Registery_Url = "http://localhost:5000/api/registery/save/";
+        static string Service_Url = "localhost:5003";
+#endif
 
         public static void Register(HttpConfiguration httpConfiguration)
         {

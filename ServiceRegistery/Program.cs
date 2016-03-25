@@ -6,8 +6,12 @@ namespace ServiceRegistery
 {
     class Program
     {
+
+#if !DEBUG
         private const string BaseAddress = "http://*:5000";
-        private const string BaseAddress_Test = "http://localhost:5000";
+#else
+        private const string BaseAddress = "http://localhost:5000";
+#endif
 
         static void Main(string[] args)
         {

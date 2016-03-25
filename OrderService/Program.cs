@@ -6,8 +6,11 @@ namespace OrderService
 { 
     class Program
     {
+#if !DEBUG
         private const string BaseAddress = "http://*:5003";
-        private const string BaseAddress_Test = "http://localhost:5003";
+#else
+        private const string BaseAddress = "http://localhost:5003";
+#endif
 
         static void Main(string[] args)
         {

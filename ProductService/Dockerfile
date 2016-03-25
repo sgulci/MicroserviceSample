@@ -1,4 +1,6 @@
-FROM mono:onbuild
+FROM mono:latest
+
+ADD . /app/
 
 EXPOSE 5004
 
