@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService", "OrderServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductService\ProductService.csproj", "{4B314825-A3E4-4BE1-AD9A-15C032DABE75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticateService", "AuthenticateService\AuthenticateService.csproj", "{615BE9A5-5008-478C-BC70-D1ECD6C708E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{4B314825-A3E4-4BE1-AD9A-15C032DABE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B314825-A3E4-4BE1-AD9A-15C032DABE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B314825-A3E4-4BE1-AD9A-15C032DABE75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615BE9A5-5008-478C-BC70-D1ECD6C708E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615BE9A5-5008-478C-BC70-D1ECD6C708E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615BE9A5-5008-478C-BC70-D1ECD6C708E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615BE9A5-5008-478C-BC70-D1ECD6C708E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

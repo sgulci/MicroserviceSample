@@ -22,12 +22,16 @@ namespace ApiGateway.Api
         [HttpGet]
         public JsonResult<string> GetOrdersByCustomer(string customerid)
         {
-            //Todo : önce service registery'den adresleri alacak sonra servisleri call edecek
             Console.WriteLine("GetOrdersByCustomer customerid :" + customerid);
 
             Console.WriteLine("Calling registery service for customer ");
 
             string customerUrl = ServiceCall.RestService(Service_Registery_Url + "customer");
+
+            if(customerUrl == "")
+            {
+                return Json("could not get customer url");
+            }
 
             Console.WriteLine("Calling customer service ");
 
@@ -38,6 +42,11 @@ namespace ApiGateway.Api
             string orderUrl = ServiceCall.RestService(Service_Registery_Url + "order");
 
             Console.WriteLine("Calling order service ");
+
+            if (orderUrl == "")
+            {
+                return Json("could not get order url");
+            }
 
             string orders = ServiceCall.RestService("http://" + orderUrl.Replace("\"", "") + "/api/order");
 
@@ -52,13 +61,17 @@ namespace ApiGateway.Api
         [HttpGet]
         public JsonResult<string> GetProductsInOrder(string orderid)
         {
-            //Todo :  önce service registery'den adresleri alacak sonra servisleri call edecek
 
             Console.WriteLine("GetProductsInOrder orderid :" + orderid);
 
             Console.WriteLine("Calling registery service for product ");
 
             string productUrl = ServiceCall.RestService(Service_Registery_Url + "product");
+
+            if (productUrl == "")
+            {
+                return Json("could not get product url");
+            }
 
             Console.WriteLine("Calling product service ");
 
@@ -70,6 +83,11 @@ namespace ApiGateway.Api
 
             string orderUrl = ServiceCall.RestService(Service_Registery_Url + "order");
 
+            if (orderUrl == "")
+            {
+                return Json("could not get order url");
+            }
+
             Console.WriteLine("Calling order service ");
 
             string orders = ServiceCall.RestService("http://" + orderUrl.Replace("\"", "") + "/api/order");
@@ -77,6 +95,29 @@ namespace ApiGateway.Api
             Console.WriteLine(" order service result " + orders);
 
             return Json(orderid + " : " + products + orders);
+        }
+
+
+        [Route("authenticate/{name}")]
+        [HttpGet]
+        public JsonResult<string> Authenticate(string name)
+        {
+            Console.WriteLine("Authenticate name :" + name);
+
+            Console.WriteLine("Calling Authenticate service for " +  name);
+
+            string authenticateUrl = ServiceCall.RestService(Service_Registery_Url + "authenticate");
+
+            if (authenticateUrl == "")
+            {
+                return Json("could not get authenticate url");
+            }
+            Console.WriteLine("Calling authenticate service ");
+
+            string result = ServiceCall.RestService("http://" + authenticateUrl.Replace("\"", "") + "/api/authenticate");
+
+
+            return Json(result);
         }
 
     }

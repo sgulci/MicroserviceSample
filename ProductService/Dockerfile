@@ -4,4 +4,4 @@ ADD . /app/
 
 EXPOSE 5004
 
-CMD ["mono", "./ProductService.exe"]
+CMD ["mono", "/app/ProductService.exe"]

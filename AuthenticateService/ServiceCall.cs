@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiGateway
+namespace AuthenticateService
 {
     public static class ServiceCall
     {
@@ -14,7 +14,7 @@ namespace ApiGateway
             
             Console.WriteLine("CallRestService url :" + url);
 
-            string content ;
+            string content = "";
 
             try
             {
@@ -23,8 +23,7 @@ namespace ApiGateway
             }
             catch (Exception ex)
             {
-                Console.WriteLine("rest call url :"+ url + " exception ex :" + ex.Message);
-                content = "";
+                Console.WriteLine("rest call url :" + url + " exception ex :" + ex.Message);
 
             }
 
