@@ -14,5 +14,5 @@ cd ..
 cd  ProductService 
 docker build -t productservice .
 cd ..
-cd  Authenticate
+cd  AuthenticateService
 docker build -t authenticateservice .

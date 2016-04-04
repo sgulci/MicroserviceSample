@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -11,8 +12,11 @@ namespace ApiGateway.Api
     public class ApiGatewayController : ApiController
     {
 #if !DEBUG
-        string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/getserviceinfo/";       
-
+        // windows içindeki docker için
+        //string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/getserviceinfo/";
+        
+        // Netaş cloud'a deployment için test edilecek adresler
+        string Service_Registery_Url = "http://217.78.97.197:5000/api/registery/getserviceinfo/";
 #else
         string Service_Registery_Url = "http://localhost:5000/api/registery/getserviceinfo/";
 #endif
@@ -100,7 +104,7 @@ namespace ApiGateway.Api
 
         [Route("authenticate/{name}")]
         [HttpGet]
-        public JsonResult<string> Authenticate(string name)
+        public HttpResponseMessage Authenticate(string name)
         {
             Console.WriteLine("Authenticate name :" + name);
 
@@ -110,14 +114,22 @@ namespace ApiGateway.Api
 
             if (authenticateUrl == "")
             {
-                return Json("could not get authenticate url");
+                return this.Request.CreateResponse(
+                              HttpStatusCode.OK,
+                              "could not get authenticate url");
             }
+
             Console.WriteLine("Calling authenticate service ");
 
             string result = ServiceCall.RestService("http://" + authenticateUrl.Replace("\"", "") + "/api/authenticate");
 
 
-            return Json(result);
+            // buraya kadar hatasız geldiğinde homecinema'ya uygun response dönüyoruz
+            return this.Request.CreateResponse(
+                              HttpStatusCode.OK,
+                              new { success = true });
+
+            
         }
 
     }
