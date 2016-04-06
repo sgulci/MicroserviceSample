@@ -13,7 +13,7 @@ app.use(cors());
 
  var   options = {
       urlRoot: '/api',
-      pathRoot: 'mocks',
+      pathRoot: 'app/mocks',
       ignoreQuery: false
     };
     

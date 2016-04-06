@@ -1,0 +1,29 @@
+FROM mono:4.2.3.4
+
+MAINTAINER Jo Shields <jo.shields@xamarin.com>
+
+RUN mkdir -p /usr/src/app/source /usr/src/app/build
+WORKDIR /usr/src/app/source
+
+ONBUILD COPY . /usr/src/app/source
+ONBUILD RUN nuget restore -NonInteractive
+
+ONBUILD WORKDIR /usr/src/app/source/ServiceRegistery
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/ServiceRegistery/
+
+ONBUILD WORKDIR /usr/src/app/source/ApiGateway
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/ApiGateway/
+
+ONBUILD WORKDIR /usr/src/app/source/CustomerService
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/CustomerService/
+
+ONBUILD WORKDIR /usr/src/app/source/OrderService
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/OrderService/
+
+ONBUILD WORKDIR /usr/src/app/source/ProductService
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/ProductService/
+
+ONBUILD WORKDIR /usr/src/app/source/AuthenticateService
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/AuthenticateService/
+
+ONBUILD WORKDIR /usr/src/app/build
