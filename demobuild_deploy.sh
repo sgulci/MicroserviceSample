@@ -16,3 +16,6 @@ docker build -t productservice .
 cd ..
 cd  AuthenticateService
 docker build -t authenticateservice .
+cd ..
+cd  MOvieService
+docker build -t movieservice .

@@ -37,3 +37,7 @@ docker build -t productservice .
 cd ../../
 cd  ./mono_build_output/AuthenticateService
 docker build -t authenticateservice .
+
+cd ../../
+cd  ./mono_build_output/MovieService
+docker build -t movieservice .

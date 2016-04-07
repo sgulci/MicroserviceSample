@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace ApiGateway
 {
@@ -25,6 +22,29 @@ namespace ApiGateway
             {
                 Console.WriteLine("rest call url :"+ url + " exception ex :" + ex.Message);
                 content = "";
+
+            }
+
+            return content;
+        }
+
+        public static HttpResponseMessage RestServiceHttpGetResponse(string url)
+        {
+
+            Console.WriteLine("CallRestService url :" + url);
+
+            HttpResponseMessage content = new HttpResponseMessage() ;
+
+            try
+            {
+                HttpClient client = new HttpClient();
+                content = client.GetAsync(url).Result;
+                //var syncClient = new WebClient();
+                //content = syncClient.h(url);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("rest call url :" + url + " exception ex :" + ex.Message);
 
             }
 

@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "connect": "^3.4.1",
-    "connect-api-mocker-adv": "^0.1.1",
+    "connect-api-mocker-adv-v2": "^0.2.1",
     "cors": "^2.7.1"
   }
 }

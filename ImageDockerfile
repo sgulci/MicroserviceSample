@@ -26,4 +26,7 @@ ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app
 ONBUILD WORKDIR /usr/src/app/source/AuthenticateService
 ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/AuthenticateService/
 
+ONBUILD WORKDIR /usr/src/app/source/MovieService
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/MovieService/
+
 ONBUILD WORKDIR /usr/src/app/build

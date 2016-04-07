@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticateService", "AuthenticateService\AuthenticateService.csproj", "{615BE9A5-5008-478C-BC70-D1ECD6C708E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieService", "MovieService\MovieService.csproj", "{1B5D81DE-2BED-49C5-8F34-F40558FB31CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{615BE9A5-5008-478C-BC70-D1ECD6C708E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{615BE9A5-5008-478C-BC70-D1ECD6C708E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{615BE9A5-5008-478C-BC70-D1ECD6C708E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B5D81DE-2BED-49C5-8F34-F40558FB31CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B5D81DE-2BED-49C5-8F34-F40558FB31CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B5D81DE-2BED-49C5-8F34-F40558FB31CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B5D81DE-2BED-49C5-8F34-F40558FB31CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

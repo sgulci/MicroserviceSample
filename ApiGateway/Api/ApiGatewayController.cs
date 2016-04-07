@@ -124,12 +124,48 @@ namespace ApiGateway.Api
             string result = ServiceCall.RestService("http://" + authenticateUrl.Replace("\"", "") + "/api/authenticate");
 
 
-            // buraya kadar hatasız geldiğinde homecinema'ya uygun response dönüyoruz
-            return this.Request.CreateResponse(
+            if(result == "")
+            {
+                return this.Request.CreateResponse(
+                              HttpStatusCode.OK,
+                              new { success = false });
+            }
+            else
+            {
+                return this.Request.CreateResponse(
                               HttpStatusCode.OK,
                               new { success = true });
+            }
+            
 
             
+        }
+
+        [Route("movies/latest")]
+        [HttpGet]
+        public HttpResponseMessage MovieLatest()
+        {
+
+            Console.WriteLine("Calling Movie service for " );
+
+            string movieUrl = ServiceCall.RestService(Service_Registery_Url + "movie");
+
+            if (movieUrl == "")
+            {
+                return this.Request.CreateResponse(
+                              HttpStatusCode.OK,
+                              "could not get movie service url");
+            }
+
+            Console.WriteLine("Calling movie service ");
+
+            var result = ServiceCall.RestServiceHttpGetResponse("http://" + movieUrl.Replace("\"", "") + "/api/movie");
+
+
+            // buraya kadar hatasız geldiğinde homecinema'ya uygun response dönüyoruz
+            return result;
+
+
         }
 
     }
