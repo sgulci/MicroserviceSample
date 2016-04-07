@@ -13,6 +13,18 @@ docker cp $id:/usr/src/app/build ./mono_build_output
 # remove the temporary container
 docker rm $id
 
+
+#remove old images
+docker rmi -f serviceregistery
+docker rmi -f apigateway
+docker rmi -f customerservice
+docker rmi -f orderservice
+docker rmi -f productservice
+docker rmi -f authenticateservice
+docker rmi -f movieservice
+docker rmi -f node_service
+docker rmi -f node_frontend
+
 # now build each image one-by-one
 
 cd  ./mono_build_output/ServiceRegistery 
@@ -41,3 +53,13 @@ docker build -t authenticateservice .
 cd ../../
 cd  ./mono_build_output/MovieService
 docker build -t movieservice .
+
+#Node service build
+cd ../../
+cd  ./node_service
+docker build -t node_service .
+
+#Node frontend build
+cd ../../
+cd  ./node_frontend
+docker build -t node_frontend .
