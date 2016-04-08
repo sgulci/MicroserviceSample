@@ -13,17 +13,11 @@ docker cp $id:/usr/src/app/build ./mono_build_output
 # remove the temporary container
 docker rm $id
 
+#kill running docker instance
+docker rm -f $(docker ps -aq)
 
 #remove old images
-docker rmi -f serviceregistery
-docker rmi -f apigateway
-docker rmi -f customerservice
-docker rmi -f orderservice
-docker rmi -f productservice
-docker rmi -f authenticateservice
-docker rmi -f movieservice
-docker rmi -f node_service
-docker rmi -f node_frontend
+docker rmi -f $(docker images -aq)
 
 # now build each image one-by-one
 
