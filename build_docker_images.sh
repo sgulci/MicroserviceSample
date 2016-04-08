@@ -54,6 +54,6 @@ cd  ./node_service
 docker build -t node_service .
 
 #Node frontend build
-cd ../../../
+cd ../
 cd  ./node_frontend
 docker build -t node_frontend .
