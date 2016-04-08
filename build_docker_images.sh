@@ -24,36 +24,36 @@ docker rm $id
 cd  ./mono_build_output/build/ServiceRegistery 
 docker build -t serviceregistery .
 
-cd ../../
+cd ../../../
 cd  ./mono_build_output/build/ApiGateway
 docker build -t apigateway .
 
-cd ../../
+cd ../../../
 cd  ./mono_build_output/build/CustomerService
 docker build -t customerservice .
 
-cd ../../
+cd ../../../
 cd  ./mono_build_output/build/OrderService
 docker build -t orderservice .
 
-cd ../../
+cd ../../../
 cd  ./mono_build_output/build/ProductService
 docker build -t productservice .
 
-cd ../../
+cd ../../../
 cd  ./mono_build_output/build/AuthenticateService
 docker build -t authenticateservice .
 
-cd ../../
+cd ../../../
 cd  ./mono_build_output/build/MovieService
 docker build -t movieservice .
 
 #Node service build
-cd ../../
+cd ../../../
 cd  ./node_service
 docker build -t node_service .
 
 #Node frontend build
-cd ../../
+cd ../../../
 cd  ./node_frontend
 docker build -t node_frontend .
