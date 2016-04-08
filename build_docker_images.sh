@@ -1,3 +1,9 @@
+#kill running docker instance
+docker rm -f $(docker ps -aq)
+
+#remove old images
+docker rmi -f $(docker images -aq)
+
 # build the template image to create actual build server image
 docker build -t tge36-mono-onbuild -f ImageDockerfile .
 
@@ -13,39 +19,33 @@ docker cp $id:/usr/src/app/build ./mono_build_output
 # remove the temporary container
 docker rm $id
 
-#kill running docker instance
-docker rm -f $(docker ps -aq)
-
-#remove old images
-docker rmi -f $(docker images -aq)
-
 # now build each image one-by-one
 
-cd  ./mono_build_output/ServiceRegistery 
+cd  ./mono_build_output/build/ServiceRegistery 
 docker build -t serviceregistery .
 
 cd ../../
-cd  ./mono_build_output/ApiGateway
+cd  ./mono_build_output/build/ApiGateway
 docker build -t apigateway .
 
 cd ../../
-cd  ./mono_build_output/CustomerService
+cd  ./mono_build_output/build/CustomerService
 docker build -t customerservice .
 
 cd ../../
-cd  ./mono_build_output/OrderService
+cd  ./mono_build_output/build/OrderService
 docker build -t orderservice .
 
 cd ../../
-cd  ./mono_build_output/ProductService
+cd  ./mono_build_output/build/ProductService
 docker build -t productservice .
 
 cd ../../
-cd  ./mono_build_output/AuthenticateService
+cd  ./mono_build_output/build/AuthenticateService
 docker build -t authenticateservice .
 
 cd ../../
-cd  ./mono_build_output/MovieService
+cd  ./mono_build_output/build/MovieService
 docker build -t movieservice .
 
 #Node service build
