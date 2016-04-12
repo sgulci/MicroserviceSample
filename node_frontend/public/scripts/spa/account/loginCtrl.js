@@ -16,13 +16,17 @@
 
         function loginCompleted(result) {
             if (result.data.success) {
-                membershipService.saveCredentials($scope.user);
-                notificationService.displaySuccess('Hello ' + $scope.user.username);
-                $scope.userData.displayUserInfo();
-                if ($rootScope.previousState)
-                    $location.path($rootScope.previousState);
-                else
-                    $location.path('/');
+               if ($scope.user.username.trim() == "demoUser") {
+                    membershipService.saveCredentials($scope.user);
+                    notificationService.displaySuccess('Hello ' + $scope.user.username);
+                    $scope.userData.displayUserInfo();
+                    if ($rootScope.previousState)
+                        $location.path($rootScope.previousState);
+                    else
+                        $location.path('/');
+                } else {
+                    notificationService.displayError('Login failed. Try again.');
+                }
             }
             else {
                 notificationService.displayError('Login failed. Try again.');

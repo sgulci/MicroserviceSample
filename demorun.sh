@@ -1,6 +1,6 @@
 
-docker pull mongo
-docker run -p 27017:27017 -d mongo
+#docker pull mongo
+#docker run -p 27017:27017 -d mongo
 
 docker run -pd 5000:5000 serviceregistery
 docker run -pd 5001:5001 apigateway

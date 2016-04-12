@@ -2,7 +2,16 @@
 docker rm -f $(docker ps -aq)
 
 #remove old images
-docker rmi -f $(docker images -aq)
+#docker rmi -f $(docker images -aq)
+docker rmi -f serviceregistery
+docker rmi -f apigateway
+docker rmi -f customerservice
+docker rmi -f orderservice
+docker rmi -f productservice
+docker rmi -f authenticateservice
+docker rmi -f movieservice
+docker rmi -f node_service
+docker rmi -f node_frontend
 
 # build the template image to create actual build server image
 docker build -t tge36-mono-onbuild -f ImageDockerfile .
