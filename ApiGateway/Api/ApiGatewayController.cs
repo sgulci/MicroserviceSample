@@ -11,15 +11,16 @@ namespace ApiGateway.Api
     [RoutePrefix("api/gateway")]
     public class ApiGatewayController : ApiController
     {
-#if !DEBUG
-        // windows içindeki docker için
-        //string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/getserviceinfo/";
+
+//#if !DEBUG
+//        // windows içindeki docker için
+//        //string Service_Registery_Url = "http://192.168.99.100:5000/api/registery/getserviceinfo/";
         
-        // Netaş cloud'a deployment için test edilecek adresler
-        string Service_Registery_Url = "http://217.78.97.197:5000/api/registery/getserviceinfo/";
-#else
-        string Service_Registery_Url = "http://localhost:5000/api/registery/getserviceinfo/";
-#endif
+//        // Netaş cloud'a deployment için test edilecek adresler
+//        string Service_Registery_Url = "http://217.78.97.197:5000/api/registery/getserviceinfo/";
+//#else
+//        string Service_Registery_Url = "http://localhost:5000/api/registery/getserviceinfo/";
+//#endif
 
 
         [Route("getordersbycustomer/{customerid}")]
@@ -30,7 +31,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for customer ");
 
-            string customerUrl = ServiceCall.RestService(Service_Registery_Url + "customer");
+            string customerUrl = ServiceCall.RestService(Config.Service_Registery_Url + "/getserviceinfo/customer");
 
             if(customerUrl == "")
             {
@@ -43,7 +44,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for order ");
 
-            string orderUrl = ServiceCall.RestService(Service_Registery_Url + "order");
+            string orderUrl = ServiceCall.RestService(Config.Service_Registery_Url + "/getserviceinfo/order");
 
             Console.WriteLine("Calling order service ");
 
@@ -70,7 +71,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for product ");
 
-            string productUrl = ServiceCall.RestService(Service_Registery_Url + "product");
+            string productUrl = ServiceCall.RestService(Config.Service_Registery_Url + "/getserviceinfo/product");
 
             if (productUrl == "")
             {
@@ -85,7 +86,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling registery service for order ");
 
-            string orderUrl = ServiceCall.RestService(Service_Registery_Url + "order");
+            string orderUrl = ServiceCall.RestService(Config.Service_Registery_Url + "/getserviceinfo/order");
 
             if (orderUrl == "")
             {
@@ -110,7 +111,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling Authenticate service for " +  name);
 
-            string authenticateUrl = ServiceCall.RestService(Service_Registery_Url + "authenticate");
+            string authenticateUrl = ServiceCall.RestService(Config.Service_Registery_Url + "/getserviceinfo/authenticate");
 
             if (authenticateUrl == "")
             {
@@ -148,7 +149,7 @@ namespace ApiGateway.Api
 
             Console.WriteLine("Calling Movie service for " );
 
-            string movieUrl = ServiceCall.RestService(Service_Registery_Url + "movie");
+            string movieUrl = ServiceCall.RestService(Config.Service_Registery_Url + "/getserviceinfo/movie");
 
             if (movieUrl == "")
             {

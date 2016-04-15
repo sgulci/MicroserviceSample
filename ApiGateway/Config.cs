@@ -5,6 +5,8 @@ namespace ApiGateway
 {
     public class Config
     {
+       public static string Service_Registery_Url;
+
         public static void Register(HttpConfiguration httpConfiguration)
         {
             httpConfiguration.MapHttpAttributeRoutes();
