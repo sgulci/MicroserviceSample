@@ -18,6 +18,11 @@ namespace AuthenticateService
             Config.Service_Registery_Url = args[1].ToString();
             Config.Service_Url = args[2].ToString();
 
+
+            Console.WriteLine("BaseAddress  :" + BaseAddress);
+            Console.WriteLine("Service_Registery_Url   :" + Config.Service_Registery_Url);
+            Console.WriteLine("Service_Url  :" + Config.Service_Url);
+
             using (WebApp.Start<Startup>(url: BaseAddress))
             {
                 Console.WriteLine("Authenticate Service started...");
