@@ -1,0 +1,3 @@
+status: 201
+body:
+  {"WhoResult":{"Activated":true,"Additional":"","Exists":false,"FacebookId":null,"FirstName":"","Id":"00000000-0000-0000-0000-000000000000","LastName":"","LoggedIn":false,"UserInformation":null,"Username":null,"WebAccountCreated":false}}
