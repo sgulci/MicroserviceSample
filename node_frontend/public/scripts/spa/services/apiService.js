@@ -12,9 +12,9 @@
         };
 
         //demo root http://localhost:3000  production root http://localhost:1487
-        var root = "http://217.78.97.197:3000";
-        var MS_demo_login_root = "http://217.78.97.197:5001/api/gateway/authenticate/test";
-        var MS_demo_movie_latest_root = "http://217.78.97.197:5001/api/gateway/movies/latest";
+        var root = "http://movie-app-demo:3000";
+        var MS_demo_login_root = "http://movie-app-demo:5001/api/gateway/authenticate/test";
+        var MS_demo_movie_latest_root = "http://movie-app-demo:5001/api/gateway/movies/latest";
 
         function get(url, config, success, failure) {
                           

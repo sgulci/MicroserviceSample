@@ -1,6 +1,6 @@
 var connect = require('connect');
 var http = require('http');
-var mocker = require('connect-api-mocker-adv');
+var mocker = require('connect-api-mocker-adv-v2');
 
 console.log("1");
 
@@ -13,7 +13,7 @@ app.use(cors());
 
  var   options = {
       urlRoot: '/api',
-      pathRoot: 'app/mocks',
+      pathRoot: 'mocks',
       ignoreQuery: false
     };
     

@@ -9,6 +9,10 @@ import sys
 
 parser = argparse.ArgumentParser()
 
+parser.add_argument('--only-run', action='store', dest='only_run',
+                    default=False,
+                    help='Do not build images but just run them')
+
 parser.add_argument('--env', action='store', dest='enviroment',
                     default='LINUX',
                     help='Store service enviroment, default is LINUX')
@@ -45,54 +49,56 @@ else:
 #kill running docker instance
 os.system('docker rm -f $(docker ps -aq)')
 
-#remove old images
-#docker rmi -f $(docker images -aq)
-os.system('docker rmi -f serviceregistery')
-os.system('docker rmi -f apigateway')
-os.system('docker rmi -f customerservice')
-os.system('docker rmi -f orderservice')
-os.system('docker rmi -f productservice')
-os.system('docker rmi -f authenticateservice')
-os.system('docker rmi -f movieservice')
-os.system('docker rmi -f node_service')
-os.system('docker rmi -f node_frontend')
+if not results.only_run:
+    
+    #remove old images
+    #docker rmi -f $(docker images -aq)
+    os.system('docker rmi -f serviceregistery')
+    os.system('docker rmi -f apigateway')
+    os.system('docker rmi -f customerservice')
+    os.system('docker rmi -f orderservice')
+    os.system('docker rmi -f productservice')
+    os.system('docker rmi -f authenticateservice')
+    os.system('docker rmi -f movieservice')
+    os.system('docker rmi -f node_service')
+    os.system('docker rmi -f node_frontend')
 
-# build the template image to create actual build server image
-os.system('docker build -t tge36-mono-onbuild -f ImageDockerfile .')
+    # build the template image to create actual build server image
+    os.system('docker build -t tge36-mono-onbuild -f ImageDockerfile .')
 
-# build the actual image to be used as build server
-os.system('docker build -t tge36-build-app .')
+    # build the actual image to be used as build server
+    os.system('docker build -t tge36-build-app .')
 
-# run a temporary container and save its id
-build_container_id = subprocess.check_output('docker create tge36-build-app' , shell=True)   
+    # run a temporary container and save its id
+    build_container_id = subprocess.check_output('docker create tge36-build-app' , shell=True)   
 
-#print("build_container_id :" + build_container_id[0:12])
+    #print("build_container_id :" + build_container_id[0:12])
 
-#os.system('docker ps')
+    #os.system('docker ps')
 
-# copy build files from container to host
-os.system('docker cp %s:/usr/src/app/build ./mono_build_output' % build_container_id[0:12])
+    # copy build files from container to host
+    os.system('docker cp %s:/usr/src/app/build ./mono_build_output' % build_container_id[0:12])
 
-# remove the temporary container
-os.system('docker rm %s' % build_container_id)
+    # remove the temporary container
+    os.system('docker rm %s' % build_container_id)
 
-os.system('docker build -t serviceregistery ./mono_build_output/build/ServiceRegistery')
+    os.system('docker build -t serviceregistery ./mono_build_output/build/ServiceRegistery')
 
-os.system('docker build -t apigateway ./mono_build_output/build/ApiGateway')
+    os.system('docker build -t apigateway ./mono_build_output/build/ApiGateway')
 
-os.system('docker build -t customerservice ./mono_build_output/build/CustomerService')
+    os.system('docker build -t customerservice ./mono_build_output/build/CustomerService')
 
-os.system('docker build -t orderservice ./mono_build_output/build/OrderService')
+    os.system('docker build -t orderservice ./mono_build_output/build/OrderService')
 
-os.system('docker build -t productservice ./mono_build_output/build/ProductService')
+    os.system('docker build -t productservice ./mono_build_output/build/ProductService')
 
-os.system('docker build -t authenticateservice ./mono_build_output/build/AuthenticateService')
+    os.system('docker build -t authenticateservice ./mono_build_output/build/AuthenticateService')
 
-os.system('docker build -t movieservice ./mono_build_output/build/MovieService')
+    os.system('docker build -t movieservice ./mono_build_output/build/MovieService')
 
-os.system('docker build -t node_service ./node_service')
+    os.system('docker build -t node_service ./node_service')
 
-os.system('docker build -t node_frontend ./node_frontend')
+    os.system('docker build -t node_frontend ./node_frontend')
 
 
 # TODO : run service docker images , when you run docker images docker cmd
@@ -139,6 +145,6 @@ while True:
                  new_port = new_port + 1
  
 
-    time.sleep(120)  # Delay for 1 minute (60 seconds)
+    time.sleep(10)  # Delay for 1 minute (60 seconds)
 
     
